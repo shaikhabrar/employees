@@ -1,0 +1,14 @@
+/* fileUploader.css */
+.fileContainer{
+  max-width: 1000px;
+  margin-top: 250px;
+}
+.App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  input[type='file'] {
+    margin: 10px 0;
+  }
+  
