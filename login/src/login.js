@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './login.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -8,16 +10,24 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if (username !== 'admin' || password !== '123') {
-      setUserNameErr(true);
-    } else {
-      setUserNameErr(false)
-      navigate("/FileUploader")
-    }
+    // if (username !== 'admin' || password !== '123') {
+    //   setUserNameErr(true);
+    // } else {
+    //   setUserNameErr(false)
+    //   navigate("/FileUploader")
+    // }
+    axios.post("http://localhost:9002/", { username, password })
+    .then( res =>  {
+      alert(res.data.message);
+      if (res.data.message === "Login successful") {
+        
+        window.location.href = '/fileUploader'; 
+      }
+    })
   };
 
   return (
-    <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto grayBackground">
+    <div className="loginContainer container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto mt-10 grayBackground">
       <div className="card card0 border-0">
         <div className="row d-flex">
           <div className="col-lg-6">
@@ -48,7 +58,7 @@ const Login = () => {
                 <button type="submit" onClick={handleLogin} className="btn btn-primary text-center">Login</button>
               </div>
               <div className="row mb-4 px-3">
-                <small className="font-weight-bold">Don't have an account? <a className="text-danger ">Sighn Up</a></small>
+                <small className="font-weight-bold">Don't have an account? <Link to="/signUp">Sighn Up</Link></small>
               </div>
             </div>
           </div>
