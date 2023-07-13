@@ -2,12 +2,19 @@
 body {
   color: #000;
   overflow-x: hidden;
-  height: 100%;
-  background-repeat: no-repeat;
 }
 
+.loginContainer{
+  height: 100vh;
+}
 .grayBackground{
-  background-color: #8c9ea7!important ;
+  /* background-color: #8c9ea7!important ; */
+    background-image: url("./image.jpeg"); /* Replace "../path/to/background.jpg" with the actual path to your image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+  
 
 
 }
@@ -37,38 +44,7 @@ body {
   border-right: 1px solid #EEEEEE;
 }
 
-.facebook {
-  background-color: #3b5998;
-  color: #fff;
-  font-size: 18px;
-  padding-top: 5px;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
 
-.twitter {
-  background-color: #1DA1F2;
-  color: #fff;
-  font-size: 18px;
-  padding-top: 5px;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
-
-.linkedin {
-  background-color: #2867B2;
-  color: #fff;
-  font-size: 18px;
-  padding-top: 5px;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
 
 .line {
   height: 1px;

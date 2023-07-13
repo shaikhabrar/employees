@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
-
+import Tabspanel from './tabs';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
@@ -8,7 +8,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import CakeIcon from '@mui/icons-material/Cake';
 import EventIcon from '@mui/icons-material/Event';
 import { Link } from 'react-router-dom';
-import "./birthday.css"
+import './birthday.css';
 
 const Birthdays = () => {
   const [activeTab, setActiveTab] = useState('File Upload');
@@ -19,7 +19,7 @@ const Birthdays = () => {
   };
 
   return (
-    <div className='birthdayContainer d-flex'>
+    <div className='birthdayContainer d-flex grayBackground mx-auto'>
       <div className="side-menu sideBar">
       <List component="nav">
         <Link to='/fileUploader'>
@@ -28,8 +28,8 @@ const Birthdays = () => {
           selected={activeTab === 'Upload New File'}
           onClick={() => handleTabClick('File Upload')}
         >
-          <ListItemIcon>
-            <CloudUploadIcon />
+          <ListItemIcon >
+            <CloudUploadIcon className='icon'/>
           </ListItemIcon>
           <ListItemText primary="UPLOAD NEW FILE" />
         </ListItem></Link>
@@ -39,7 +39,7 @@ const Birthdays = () => {
           onClick={() => handleTabClick('Birthdays')}
         >
           <ListItemIcon>
-            <CakeIcon />
+            <CakeIcon className='icon'/>
           </ListItemIcon>
           <ListItemText primary="UPCOMING BIRTHDAYS" />
         </ListItem>
@@ -49,30 +49,14 @@ const Birthdays = () => {
           onClick={() => handleTabClick('Anniversary')}
         >
           <ListItemIcon>
-            <EventIcon />
+            <EventIcon className='icon'/>
           </ListItemIcon>
           <ListItemText primary="UPCOMING ANNIVERSARY" />
         </ListItem>
       </List>
       </div>
-      <div>
-          <Tabs>
-          <TabList>
-            <Tab>Upto 7 Days</Tab>
-            <Tab>Upto 14 Days</Tab>
-            <Tab>Upto 1 Month</Tab>
-          </TabList>
-    
-          <TabPanel>
-            <h2>Content 1</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Content 2</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Content 3</h2>
-          </TabPanel>
-        </Tabs>
+      <div className='tabContainer'>
+          <Tabspanel/>
         </div>
         </div>
  
@@ -81,5 +65,3 @@ const Birthdays = () => {
 
 
 export default Birthdays;
-
-
