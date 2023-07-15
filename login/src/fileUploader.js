@@ -9,15 +9,15 @@ const FileUploader = () => {
   const [showUploadOption, setShowUploadOption] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
   const sessionData =sessionStorage.getItem("loggedinUserData")
+  console.log(sessionData);
   const userData = sessionData?.length>0 && JSON.parse(sessionData);
 
 
   const fileRef = useRef();
   const navigate = useNavigate();
 
-
   const uploadNewFile = (e) => {
-    setShowLoader(true);
+    setShowLoader(true); 
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
@@ -56,7 +56,7 @@ const FileUploader = () => {
             className="btn btn-primary m-2"
             onClick={() => navigate("/birthdays")}
           >
-            Check Existing Sheets{" "}
+            Check Existing Sheets
           </button>
         </div>
         {showUploadOption && (

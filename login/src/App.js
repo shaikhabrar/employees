@@ -10,10 +10,9 @@ import Login from "./login";
 import FileUploader from "./fileUploader";
 import Signup from "./signup";
 import "./FileUploader.css";
-import Popup from "./popup";
 import Birthdays from "./birthdays";
 import HomePage from "./HomePage";
-import { toast } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 
 
 const App = () => {
@@ -25,19 +24,19 @@ const App = () => {
 
   return (
     <Router>
+      <ToastContainer/>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/signUp" element={<Signup />} />
         <Route
           path="/Fileuploader"
           element={<PrivateRoute element={FileUploader} />}
         />
-        <Route path="/popup" element={<PrivateRoute element={Popup} />} />
         <Route
           path="/birthdays"
           element={<PrivateRoute element={Birthdays} />}
         />
-        <Route path="/homePage" element={<PrivateRoute element={HomePage} />} />
       </Routes>
     </Router>
   );
