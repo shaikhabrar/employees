@@ -1,18 +1,48 @@
-import React from 'react';
-import './HomePage.css'; // Import the CSS file for styling
-import logoImage from './LOGO.jpg';
+import React from "react";
+import "./HomePage.css"; // Import the CSS file for styling
+import logoImage from "./LOGO.jpg";
+import table from "./table.png";
+import milestones from "./milestones.png"
+import { Link, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <div className="container">
-      <img src={logoImage} className="logo" alt="Logo" width="auto"/>
-      <div className="content">
-        <button className="button">Sign In</button>
-        <button className="button">Sign Up</button>
+    <>
+      <div className="Milestones">
+      <img src={milestones} className="milestone" alt="milestones monitor" width="auto" />
+        
       </div>
-      <div className="footer"></div>
-    </div>
+      <div className="container ">
+        <img src={logoImage} className="logo" alt="Logo" />
+        <div className="d-flex logoContainer">
+          <div className="logoContainer">
+            <img src={table} className="logoImg" alt="Logo" width="auto" />
+          </div>
+          <div className="content">
+            <div>
+            <Link to="/Login">
+              <button type="submit" className="button" >
+                Sign In
+              </button>
+            </Link></div>
+           <div> <Link to="/signup">
+              <button type="submit" className="button">
+                Sign Up
+              </button>
+            </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="footer">
+      <p>Upload the excel file consists coloumns - Emp Name , Birth Date and Date of Joining as following next to each other.</p>
+      </div>
+
+      <div className="by">
+      <p>BY ABRAR SHAIKH</p>
+      </div>
+    </>
   );
-}
+};
 
 export default HomePage;
