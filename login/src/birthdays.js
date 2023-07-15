@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "react-tabs/style/react-tabs.css";
 import axios from "axios";
 import Tabspanel from "./tabs";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -59,10 +58,10 @@ const Birthdays = () => {
     <div className="birthdayContainer d-flex grayBackground mx-auto">
       <div className="side-menu sideBar">
       <Link to="/fileUploader">
+        <CloudUploadIcon className="icon "/>
            Upload New File
           </Link>
         <List component="nav">
-          
           <ListItem
             button
             selected={activeTab === "Birthdays"}
