@@ -10,10 +10,7 @@ import EventIcon from "@mui/icons-material/Event";
 import { Link } from "react-router-dom";
 import "./birthday.css";
 
-// add table to have different sheets
-// once user clicks on the sheet Call api and fetch that sheet data and store it inside excelData variable.
 
-// need to send excelData to tab components
 const Birthdays = () => {
   const [activeTab, setActiveTab] = useState("Birthdays");
   const [fileList, setFileList] = useState([]);
@@ -31,14 +28,13 @@ const Birthdays = () => {
       setFileList(fileListResp.data);
     }
   };
-
   useEffect(() => {
     getFileList();
   }, []);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-    // Add logic to handle the selected tab
+  
   };
 
   const fetchFileContent = async (fileId) => {
