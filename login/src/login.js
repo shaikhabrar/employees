@@ -1,4 +1,4 @@
-import React, { useState, navigate } from "react";
+import React, { useState} from "react";
 import "./login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -8,11 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [userNameErr, setUserNameErr] = useState(false);
-  const [passwordErr, setPasswordErr] = useState(false);
 
   const handleLogin = () => {
-    if (!userNameErr && !passwordErr) {
       axios
         .post("http://localhost:9002/login", { username, password })
         .then((res) => {
@@ -26,13 +23,13 @@ const Login = () => {
               window.location.href = "/fileUploader";
             }, 1000);
           } else {
-            alert(res.data.message);
+            toast(res.data.message);
           }
         })
         .catch((err) => {
           console.log("Login failed");
         });
-    }
+    
   };
 
   const checkIfValidLogin = () => {
@@ -68,9 +65,6 @@ const Login = () => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
-                {userNameErr && (
-                  <span className="text-danger">Enter username</span>
-                )}
               </div>
               <div className="row px-3">
                 <label className="mb-1">
@@ -83,16 +77,13 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                {passwordErr && (
-                  <span className="text-danger">Enter 8 digits password</span>
-                )}
               </div>
               <div className="row my-4 px-3">
                 <button
                   type="submit"
                   onClick={handleLogin}
                   className="btn btn-primary text-center"
-                  disabled={checkIfValidLogin()} // Disable the Login button if the form is not valid
+                  disabled={checkIfValidLogin()} 
                 >
                   Login
                 </button>

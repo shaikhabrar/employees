@@ -1,8 +1,8 @@
-import React, { useState, useNavigate } from "react";
+import React, { useState } from "react";
 import "./signup.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import { toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
@@ -12,15 +12,14 @@ const Signup = () => {
   const [userNameErr, setUserNameErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
-  // const toast = require("react-toastify");
 
   const handleSubmit = () => {
-    if (username == "") {
+    if (username === "") {
       setUserNameErr(true);
     } else {
       setUserNameErr(false);
     }
-    if (email == "") {
+    if (email === "") {
       setEmailErr(true);
     } else {
       setEmailErr(false);
@@ -76,7 +75,7 @@ const Signup = () => {
           <div className="col-lg-6">
             <div className="card1 pb-5">
               <div className="row px-3 justify-content-center mt-4 mb-5 border-line">
-                <img src="https://i.imgur.com/uNGdWHi.png" className="image" />
+                <img src="https://i.imgur.com/uNGdWHi.png" alt="logo" className="image" />
               </div>
             </div>
           </div>

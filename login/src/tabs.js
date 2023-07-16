@@ -66,17 +66,23 @@ const Tabspanel = ({ activeTab, excelData }) => {
       {activeTab === "Birthdays" && upcomingBirthdays.length > 0 && (
      <div>
           <h3>Upcoming Birthdays</h3>
-     <div className="border d-flex ">
-      <h5 className="border m-2">Employee Name</h5>
-      <h5 className="m-2">Date of Birth</h5>
+     <div>
+     <table>
+                <tbody>
+                <tr>
+                  <td className="px-4 py-1 column2">Employee Name</td>
+                  <td className="px-4 py-1 column2">Date of Birth</td>
+                </tr>
+                </tbody>
+              </table>
       </div>
           {upcomingBirthdays.map((row, index) => (
             <div key={index}>
             <table>
                 <tbody>
                 <tr>
-                  <td className="px-4 py-1">{row[0]}</td>
-                  <td className="px-4 py-1">{row[2]}</td>
+                  <td className="px-4 py-1 column1">{row[0]}</td>
+                  <td className="px-4 py-1 column1">{row[2]}</td>
                 </tr>
                 </tbody>
               </table>
@@ -89,16 +95,22 @@ const Tabspanel = ({ activeTab, excelData }) => {
         <div>
           <h3>Upcoming Work Anniversaries</h3>
 
-           <div className="d-flex ">
-      <h5 className="m-2">Employee Name</h5>
-      <h5 className="m-2">Date of Anniversary</h5>
+           <div >
+           <table>
+                <tbody>
+                <tr>
+                  <td className="px-4 py-1 column2">Employee Name</td>
+                  <td className="px-4 py-1 column2">Date of Anniversary</td>
+                </tr>
+                </tbody>
+              </table>
       </div>
           {upcomingAnniversary.map((row, index) => (
             <div key={index}>
               <table>
                 <tr>
-                  <td className="px-4 py-1">{row[0]}</td>
-                  <td className="px-4 py-1">{row[2]}</td>
+                  <td className="px-4 py-1 column1">{row[0]}</td>
+                  <td className="px-4 py-1 column1">{row[2]}</td>
                 </tr>
               </table>
             </div>
@@ -112,7 +124,7 @@ const Tabspanel = ({ activeTab, excelData }) => {
   return (
     <div>
       <Tabs>
-        <TabList>
+        <TabList className="tabss">
           <Tab onClick={() => handleTabChange(7)}>Upto 7 Days</Tab>
           <Tab onClick={() => handleTabChange(14)}>Upto 14 Days</Tab>
           <Tab onClick={() => handleTabChange(30)}>Upto 1 Month</Tab>
