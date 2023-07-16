@@ -72,7 +72,7 @@ const Birthdays = () => {
             </ListItemIcon>
             <ListItemText primary="UPCOMING BIRTHDAYS" />
           </ListItem>
-          <ListItem
+          <ListItem 
             button
             selected={activeTab === "Anniversary"}
             onClick={() => handleTabClick("Anniversary")}
@@ -89,7 +89,7 @@ const Birthdays = () => {
           <div className="filelist">
             <table class="table table-striped">
               <thead>
-                <tr>
+                <tr className="tablehead">
                   <th scope="col">No</th>
                   <th scope="col">File Name</th>
                 </tr>

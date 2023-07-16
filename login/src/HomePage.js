@@ -3,7 +3,7 @@ import "./HomePage.css"; // Import the CSS file for styling
 import logoImage from "./LOGO.jpg";
 import table from "./table.png";
 import milestones from "./milestones.png"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
