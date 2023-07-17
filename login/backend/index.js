@@ -5,6 +5,12 @@ import multer from "multer";
 import XLSX from "xlsx";
 import xlsx from "xlsx";
 import fs from "fs";
+// import path from "path";
+// import { fileURLToPath } from "url";
+// import path, { dirname } from "path";
+
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -27,6 +33,14 @@ mongoose
   .catch((error) => {
     console.log("Error connecting to database:", error);
   });
+
+//   const build=path.join(__dirname+'/public')
+// // path.join(__dirname+'/public')
+// app.use(express.static(build))
+
+// app.get('*',async(req,res)=>{
+//     res.sendFile(path.join(build,'index.html'))
+// })
 
 const userSchema = new mongoose.Schema({
   username: String,

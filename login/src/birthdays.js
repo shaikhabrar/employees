@@ -27,6 +27,7 @@ const Birthdays = () => {
     if (fileListResp) {
       setFileList(fileListResp.data);
     }
+    console.log(currentFileData);
   };
   useEffect(() => {
     getFileList();
