@@ -49,7 +49,7 @@ const Signup = () => {
       };
       const Signup = () => {
         axios
-          .post("cluster0.rkx2uaw.mongodb.net/signUp", signUpData)
+          .post("http://localhost:9002/signUp", signUpData)
           .then((res) => {
             toast(res.data.message);
             if (res.data.message === "Signed up successfully") {
