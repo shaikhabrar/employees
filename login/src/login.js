@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -11,30 +11,40 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-      axios
-        .post(API.LOGIN, { username, password })
-        .then((res) => {
-          if (res.data && res.data.user) {
-            sessionStorage.setItem(
-              "loggedinUserData",
-              JSON.stringify(res.data.user)
-            );
-            toast(res.data.message);
-            setTimeout(() => {
-              window.location.href = "/fileUploader";
-            }, 1000);
-          } else {
-            toast(res.data.message);
-          }
-        })
-        .catch((err) => {
-          console.log("Login failed");
-        });
-    
+    axios
+      .post(API.LOGIN, { username, password })
+      .then((res) => {
+        if (res.data && res.data.user) {
+          sessionStorage.setItem(
+            "loggedinUserData",
+            JSON.stringify(res.data.user)
+          );
+          toast(res.data.message);
+          setTimeout(() => {
+            window.location.href = "/fileUploader";
+          }, 1000);
+        } else {
+          toast(res.data.message);
+        }
+      })
+      .catch((err) => {
+        console.log("Login failed");
+      });
   };
 
   const checkIfValidLogin = () => {
     return !(username !== "" && password !== "" && password.length >= 8);
+  };
+
+  const handleKeyPress = (e) => {
+    if (
+      e.key === "Enter" &&
+      username !== "" &&
+      password !== "" &&
+      password.length >= 8
+    ) {
+      handleLogin();
+    }
   };
 
   return (
@@ -76,6 +86,7 @@ const Login = () => {
                   name="password"
                   placeholder="Enter password"
                   value={password}
+                  onKeyPress={handleKeyPress}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -84,7 +95,7 @@ const Login = () => {
                   type="submit"
                   onClick={handleLogin}
                   className="btn btn-primary text-center"
-                  disabled={checkIfValidLogin()} 
+                  disabled={checkIfValidLogin()}
                 >
                   Login
                 </button>
