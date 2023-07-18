@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./FileUploader.css";
+const { API } = require("./config/" + process.env.NODE_ENV);
 
 
 const FileUploader = () => {
@@ -20,7 +21,7 @@ const FileUploader = () => {
     formData.append("userId", userData._id);
 
     axios
-      .post("http://localhost:9002/fileUploader", formData)
+      .post(API.FILEUPLOADER, formData)
       .then((res) => {
         console.log(res.data);
         console.log("yesss");

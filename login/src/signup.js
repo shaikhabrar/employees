@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const { API } = require("./config/" + process.env.NODE_ENV);
+
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -49,7 +51,7 @@ const Signup = () => {
       };
       const Signup = () => {
         axios
-          .post("http://localhost:9002/signUp", signUpData)
+          .post(API.SIGNUP, signUpData)
           .then((res) => {
             toast(res.data.message);
             if (res.data.message === "Signed up successfully") {

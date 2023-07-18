@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const { API } = require("./config/" + process.env.NODE_ENV);
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,7 +12,7 @@ const Login = () => {
 
   const handleLogin = () => {
       axios
-        .post("http://localhost:9002/login", { username, password })
+        .post(API.LOGIN, { username, password })
         .then((res) => {
           if (res.data && res.data.user) {
             sessionStorage.setItem(
