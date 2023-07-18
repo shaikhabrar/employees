@@ -1,5 +1,5 @@
 import React from "react";
-import "./HomePage.css"; // Import the CSS file for styling
+import "./HomePage.css"; 
 import logoImage from "./LOGO.jpg";
 import table from "./table.png";
 import milestones from "./milestones.png"
@@ -10,7 +10,6 @@ const HomePage = () => {
     <>
       <div className="Milestones">
       <img src={milestones} className="milestone" alt="milestones monitor" width="auto" />
-        
       </div>
       <div className="container ">
         <img src={logoImage} className="logo" alt="Logo" />
