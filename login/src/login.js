@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleLogin = () => {
       axios
-        .post("http://localhost:9002/login", { username, password })
+        .post("http://34.125.127.98:9002", { username, password })
         .then((res) => {
           if (res.data && res.data.user) {
             sessionStorage.setItem(
