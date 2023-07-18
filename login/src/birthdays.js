@@ -9,6 +9,7 @@ import CakeIcon from "@mui/icons-material/Cake";
 import EventIcon from "@mui/icons-material/Event";
 import { Link } from "react-router-dom";
 import "./birthday.css";
+const { API } = require("./config/" + process.env.NODE_ENV);
 
 
 const Birthdays = () => {
@@ -22,7 +23,7 @@ const Birthdays = () => {
 
   const getFileList = async () => {
     const fileListResp = await axios.get(
-      `http://localhost:9002/users/${userData._id}`
+      `${API.USERS}/${userData._id}`
     );
     if (fileListResp) {
       setFileList(fileListResp.data);
@@ -41,7 +42,7 @@ const Birthdays = () => {
   const fetchFileContent = async (fileId) => {
     try {
       const response = await axios.get(
-        `http://localhost:9002/fileUploader/${userData._id}/${fileId}`
+        `${API.FILEUPLOADER}/${userData._id}/${fileId}`
       );
       if (response?.data) {
         setcurrentFileData(response.data);
