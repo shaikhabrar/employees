@@ -28,6 +28,7 @@ const Birthdays = () => {
     if (fileListResp) {
       setFileList(fileListResp.data);
     }
+    
     console.log(currentFileData);
   };
   useEffect(() => {
@@ -55,16 +56,28 @@ const Birthdays = () => {
   return (
     <div className="birthdayContainer d-flex grayBackground mx-auto">
       <div className="side-menu sideBar">
-      <Link to="/fileUploader">
-        <CloudUploadIcon className="icon "/>
-           Upload New File
-          </Link>
         <List component="nav">
+          <ListItem
+            button
+            selected={activeTab === "Birthdays"}
+            onClick={() => handleTabClick("Birthdays")}m
+
+          >
+          
+            <ListItemIcon>
+            <Link to="/fileUploader">
+              <CloudUploadIcon className="icon "/>
+              </Link>
+            </ListItemIcon>
+            <ListItemText primary="Upload New File" />
+            
+        </ListItem>
           <ListItem
             button
             selected={activeTab === "Birthdays"}
             onClick={() => handleTabClick("Birthdays")}
           >
+
             <ListItemIcon>
               <CakeIcon className="icon" />
             </ListItemIcon>
@@ -84,7 +97,7 @@ const Birthdays = () => {
       </div>
       {fileList?.length > 0 ? (
         <>
-          <div className="filelist">
+          <div className="filelist" style={{overflowY: 'scroll', overflowX:'hidden'}}>
             <table class="table table-striped">
               <thead>
                 <tr className="tablehead">
@@ -92,7 +105,7 @@ const Birthdays = () => {
                   <th scope="col">File Name</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody >
                 {fileList?.map((file, key) => {
                   return (
                     <tr
@@ -119,7 +132,7 @@ const Birthdays = () => {
             </table>
           </div>
 
-          <div className="tabContainer">
+          <div className="tabContainer" style={{overflowY: 'scroll', overflowX:'hidden'}}>
             <Tabspanel activeTab={activeTab} excelData={currentFileData} />
           </div>
         </>
