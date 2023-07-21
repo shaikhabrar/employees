@@ -20,20 +20,31 @@ const Birthdays = () => {
   const sessionData =sessionStorage.getItem("loggedinUserData")
 
   const userData = sessionData?.length>0 && JSON.parse(sessionData);
+  const isAdmin = userData?.username === "admin";
+  const username= "admin";
+
+ 
 
   const getFileList = async () => {
     const fileListResp = await axios.get(
-      `${API.USERS}/${userData._id}`
+      `${API.USERS}/${username}`
     );
     if (fileListResp) {
       setFileList(fileListResp.data);
+      // console.log(fileListResp.data);
+    }
+    else{
+      console.log("notttt")
     }
     
-    console.log(currentFileData);
+    // console.log(currentFileData);
   };
+  
   useEffect(() => {
     getFileList();
   }, []);
+  // console.log(fileList);
+  
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -43,7 +54,7 @@ const Birthdays = () => {
   const fetchFileContent = async (fileId) => {
     try {
       const response = await axios.get(
-        `${API.FILEUPLOADER}/${userData._id}/${fileId}`
+        `${API.FILEUPLOADER}/${username}/${fileId}`
       );
       if (response?.data) {
         setcurrentFileData(response.data);
@@ -60,16 +71,16 @@ const Birthdays = () => {
           <ListItem
             button
             selected={activeTab === "Birthdays"}
-            onClick={() => handleTabClick("Birthdays")}m
+            onClick={() => handleTabClick("Birthdays")}
 
           >
           
             <ListItemIcon>
-            <Link to="/fileUploader">
+            {isAdmin &&(<Link to="/fileUploader">
               <CloudUploadIcon className="icon "/>
-              </Link>
+              </Link>)}
             </ListItemIcon>
-            <ListItemText primary="Upload New File" />
+            {isAdmin&&(<ListItemText primary="Upload New File" />)}
             
         </ListItem>
           <ListItem

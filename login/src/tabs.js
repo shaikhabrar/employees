@@ -72,6 +72,8 @@ const Tabspanel = ({ activeTab, excelData }) => {
                 <tr>
                   <td className="px-4 py-1 column2">Employee Name</td>
                   <td className="px-4 py-1 column2">Date of Birth</td>
+                  <td className="px-4 py-1 column2">favourite Colour</td>
+                  <td className="px-4 py-1 column2">favourite food</td>
                 </tr>
                 </tbody>
               </table>
@@ -83,6 +85,8 @@ const Tabspanel = ({ activeTab, excelData }) => {
                 <tr>
                   <td className="px-4 py-1 column1">{row[0]}</td>
                   <td className="px-4 py-1 column1">{row[2]}</td>
+                  <td className="px-4 py-1 column1">{row[3]}</td>
+                  <td className="px-4 py-1 column1">{row[4]}</td>
                 </tr>
                 </tbody>
               </table>
@@ -101,6 +105,8 @@ const Tabspanel = ({ activeTab, excelData }) => {
                 <tr>
                   <td className="px-4 py-1 column2">Employee Name</td>
                   <td className="px-4 py-1 column2">Date of Anniversary</td>
+                  <td className="px-4 py-1 column2">favourite Colour</td>
+                  <td className="px-4 py-1 column2">favourite food</td>
                 </tr>
                 </tbody>
               </table>
@@ -111,6 +117,8 @@ const Tabspanel = ({ activeTab, excelData }) => {
                 <tr>
                   <td className="px-4 py-1 column1">{row[0]}</td>
                   <td className="px-4 py-1 column1">{row[2]}</td>
+                  <td className="px-4 py-1 column1">{row[3]}</td>
+                  <td className="px-4 py-1 column1">{row[4]}</td>
                 </tr>
               </table>
             </div>
