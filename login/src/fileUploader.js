@@ -14,6 +14,8 @@ const FileUploader = () => {
   const fileRef = useRef();
   const navigate = useNavigate();
 
+  const isAdmin = userData?.username === "admin";
+
   const uploadNewFile = (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
@@ -43,13 +45,14 @@ const FileUploader = () => {
           <div className="">
             <h1>Welcome {userData?.username}</h1>
             <div className="uploadsheetposition">
-              <button
-                className="btn btn-primary m-2 uploadsheet"
-                onClick={() => setShowUploadOption(true)}
-              >
-                UPLOAD NEW SHEET
-              </button>
-
+            {isAdmin && (
+                <button
+                  className="btn btn-primary m-2 uploadsheet"
+                  onClick={() => setShowUploadOption(true)}
+                >
+                  UPLOAD NEW SHEET
+                </button>
+              )}
               <button
                 className="btn btn-primary m-2 uploadsheet"
                 onClick={() => navigate("/birthdays")}

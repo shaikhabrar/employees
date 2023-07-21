@@ -5,3 +5,6 @@ export const API={
     FILEUPLOADER:`${DOMAIN}/fileUploader`,
     USERS:`${DOMAIN}/users`
 };
+
+
+// const DOMAIN ="http://localhost:9002"

@@ -46,6 +46,7 @@ const userSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
+  role: String,
   files: [{ filename: String, path: String }]
 });
 
@@ -55,6 +56,7 @@ app.get("/users", async (req, res) => {
   try {
     const users = await User.find({});
     res.send(users);
+    console.log(users);
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
@@ -65,7 +67,9 @@ app.get("/users", async (req, res) => {
 app.get("/users/:userId", async (req, res) => {
   try {
     const { userId } = req.params;
-    const user = await User.findById(userId);
+    const adminID= "64b2bd75c66d5115ebebc496";
+    const user = await User.findById(adminID);
+    console.log(user)
 
     if (!user) {
       return res.status(404).send({ message: "User not found" });
@@ -82,33 +86,35 @@ app.get("/users/:userId", async (req, res) => {
 app.post("/fileUploader", upload.single("file"), async (req, res) => {
   // file content with user id
   // then file will be stored against that user
-  const file = req.file;
-  const userId = req.body.userId;
-  console.log("FILE", req.body);
-  const workbook = xlsx.readFile(file.path);
-  const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-  const jsonData = xlsx.utils.sheet_to_json(worksheet, { header: 1 });
 
-  // Assuming your Excel has a header row, skip the first row (index 0)
-  const data = jsonData.slice(1);
+  
+    const file = req.file;
+    const username = req.body.userId;
+    console.log("FILE", req.body);
+    const workbook = xlsx.readFile(file.path);
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    const jsonData = xlsx.utils.sheet_to_json(worksheet, { header: 1 });
+ // Assuming your Excel has a header row, skip the first row (index 0)
+ const data = jsonData.slice(1);
 
-  // Save the file information to the user in MongoDB
-  User.findByIdAndUpdate(
-    userId,
-    { $push: { files: { filename: file.originalname, path: file.path } } },
-    { new: true }
-  )
-    .then((updatedUser) => {
-      // File uploaded and user updated successfully
-      res
-        .status(200)
-        .json({ message: "File uploaded successfully!", user: updatedUser });
-    })
-    .catch((error) => {
-      // Error occurred while saving the data
-      res.status(500).json({ error: "Error saving data to the database." });
-    });
-});
+ // Save the file information to the user in MongoDB
+ User.findByIdAndUpdate(
+   username,
+   { $push: { files: { filename: file.originalname, path: file.path } } },
+   { new: true }
+ )
+   .then((updatedUser) => {
+     // File uploaded and user updated successfully
+     res
+       .status(200)
+       .json({ message: "File uploaded successfully!", user: updatedUser });
+   })
+   .catch((error) => {
+     // Error occurred while saving the data
+     res.status(500).json({ error: "Error saving data to the database." });
+   });
+  }
+);
 
 function convertExcelDate(serialNumber) {
   const date = new Date((serialNumber - 25569) * 86400 * 1000);
@@ -119,11 +125,11 @@ function convertExcelDate(serialNumber) {
   return formattedDate;
 }
 
-app.get("/fileUploader/:userId/:fileId", (req, res) => {
-  const { userId, fileId } = req.params;
+app.get("/fileUploader/:username/:fileId", (req, res) => {
+  const { username, fileId } = req.params;
 
   // Assuming you have a User model imported
-  User.findOne({ _id: userId })
+  User.findOne({ username: username })
     .then((user) => {
       if (!user) {
         throw new Error("User not found");
