@@ -64,7 +64,7 @@ app.get("/users", async (req, res) => {
 
 // get current fileList from backend
 
-app.get("/users/:userId", async (req, res) => {
+app.get("/users/:adminID", async (req, res) => {
   try {
     const { userId } = req.params;
     const adminID= "64b2bd75c66d5115ebebc496";
