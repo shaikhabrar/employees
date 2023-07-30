@@ -38,11 +38,7 @@ const HomePage = () => {
       </div>
 
       <div className="by">
-<<<<<<< HEAD
-      <p>BY rohit </p>
-=======
       <p>BY ABRAR SHAIKH2023</p>
->>>>>>> 18a342042f2f98e72e3a746ff31d40fbab63c6b9
       </div>
     </>
   );
